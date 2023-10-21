@@ -3,9 +3,8 @@
   --dark-desaturated-blue: 244, 38%, 16%;
   --soft-violet: 277, 64%, 61%;
   --white: 0, 0%, 100%;
-  --slightly-white: 0, 0%, 100%;
-  --lightly-transparent-white: 0, 0%, 100%;
-  --font-family-ibm: "IBM Plex Sans", sans-serif;
+  --font-family-inter: "Inter", sans-serif;
+  --font-family-ldeca: "Lexend Deca", sans-serif;
 }
 
 *,
@@ -38,7 +37,8 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   max-width: 1440px;
-  background-color: #0A0C1C;
+  background-color: hsl(var(--very-dark-blue));
+  padding: 30px;
 }
 
 a:not([class]) {
@@ -54,49 +54,94 @@ picture {
 
 main .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   margin: 10% auto;
   max-width: 1110px;
   border-radius: 8px;
-  background: #1B1937;
+  background-color: hsl(var(--dark-desaturated-blue));
   box-shadow: 0px 20px 20px -10px rgba(23, 25, 41, 0.2);
 }
-main .container .desktop {
-  display: none;
-  width: 874px;
-  height: 582px;
+main .container .image {
+  position: relative;
 }
-@media screen and (min-width: 768px) {
-  main .container .desktop {
+main .container .image .desktop {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: none;
+  max-width: 874px;
+}
+@media screen and (min-width: 1200px) {
+  main .container .image .desktop {
     display: block;
   }
-  main .container .mobile {
+}
+main .container .image .mobile {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+@media screen and (min-width: 1200px) {
+  main .container .image .mobile {
     display: none;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
+  main .container .image {
+    order: 1;
+  }
+}
+main .container .image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0%;
+  background-color: hsl(var(--soft-violet));
+  height: 100%;
+  width: 100%;
+  opacity: 0.7511;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+@media screen and (min-width: 1200px) {
+  main .container .image::after {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
   main .container {
     flex-direction: row;
   }
 }
 main .container .content {
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+@media screen and (min-width: 1200px) {
+  main .container .content {
+    padding: 0;
+  }
 }
 main .container .content .title {
-  color: #FFF;
+  width: 264px;
+  color: hsl(var(--white));
   text-align: center;
-  font-family: Inter;
+  font-family: var(--font-family-var(--font-family-inter));
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: 32px;
 }
 main .container .content .title span {
-  color: #AB5CDB;
+  color: hsl(var(--soft-violet));
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   main .container .content .title {
     font-size: 36px;
     line-height: 44px;
@@ -105,29 +150,32 @@ main .container .content .title span {
   }
 }
 main .container .content .description {
-  color: #FFF;
+  color: hsl(var(--white));
   text-align: center;
-  font-family: Inter;
+  font-family: var(--font-family-inter);
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 25px;
   opacity: 0.75;
+  width: 264px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   main .container .content .description {
-    width: 374px;
+    width: 325px;
     text-align: left;
   }
 }
 main .container .content .info {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  display: flex;
+  gap: 15px;
+  text-align: center;
 }
 main .container .content .info p {
-  color: #FFF;
-  font-family: Inter;
+  color: hsl(var(--white));
+  font-family: var(--font-family-inter);
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -135,12 +183,20 @@ main .container .content .info p {
 }
 main .container .content .info p span {
   display: block;
-  color: #FFF;
-  font-family: Lexend Deca;
+  color: hsl(var(--white));
+  font-family: var(--font-family-ldeca);
   font-size: 12px;
   font-weight: 400;
   line-height: 25px;
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 0.6;
+}
+@media screen and (min-width: 1200px) {
+  main .container .content .info {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 35px;
+    text-align: left;
+  }
 }/*# sourceMappingURL=style.css.map */
